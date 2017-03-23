@@ -175,3 +175,59 @@ var scoresWithGrades = [["A"],["B"],["C"],["D"],["F"]];
 // printing the result to the console
 console.log(atheniumGrading([99, 92, 91, 91, 89, 85, 83, 82, 80, 79, 78,
 78, 77, 76, 75, 74, 62, 55, 43, 20]));
+
+++++++++++++++++++++++++++++++++using object+++++++++++++++++++++++++++++++++
+function atheniumGrading(scores) {
+//sorting the array in descending order
+// scores.sort(function(a, b){return b - a;})
+
+// checking the highest values in the array
+var maxm = Math.max(...scores);
+
+// creating an array for grades
+var scoresWithGrades = [["A"],["B"],["C"],["D"],["F"]];
+var objScores ={"A":[],"B":[],"C":[],"D":[],"F":[]};
+
+  // looping thru the given array
+  for (var i in scores){
+    // checking if the score is greater greater or equal to 90% for A
+    if((scores[i]*100)/maxm >= 90){
+       scoresWithGrades[0].push(scores[i]);
+       objScores.A.push(scores[i]);
+      
+     
+       }
+    // checking if the score is greater greater or equal to 75% for B
+    else if(scores[i]*100/maxm >=75){
+
+      scoresWithGrades[1].push(scores[i]);
+      objScores.B.push(scores[i]);
+      
+    }
+    // checking if the score is greater greater or equal to 60% for C
+        else if(scores[i]*100/maxm >=60){
+
+      scoresWithGrades[2].push(scores[i])
+      objScores.C.push(scores[i]);
+    }
+    // checking if the score is greater greater or equal to 50% for D
+            else if(scores[i]*100/maxm >=50){
+
+      scoresWithGrades[3].push(scores[i]);
+      objScores.D.push(scores[i]);
+    }
+    // finally the remaing scores are fail 
+            else{
+
+      scoresWithGrades[4].push(scores[i])
+      objScores.F.push(scores[i]);
+    }
+  }
+// returning the final output
+ return [scoresWithGrades, objScores];
+
+}
+// printing the result to the console
+console.log(atheniumGrading([99, 92, 91, 91, 89, 85, 83, 82, 80, 79, 78,
+78, 77, 76, 75, 74, 62, 55, 43, 20]));
+
